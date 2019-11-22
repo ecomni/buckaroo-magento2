@@ -120,6 +120,10 @@ abstract class AbstractConfigProvider implements ConfigProviderInterface
             $class = get_class($this);
             $classParts = explode('\\', $class);
             $className = end($classParts);
+            if ($className == 'Interceptor') {
+                array_pop($classParts);
+                $className = end($classParts);
+            }
 
             /**
              * Uppercase and append it to the XPATH prefix & child class' name
